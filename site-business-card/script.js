@@ -59,18 +59,10 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && document
     });
   });
 
-  const TG_TOKEN = '8585916230:AAFx3KRvFqugzxD6vXAkE-5c5s7jVOMlDg8';
-  const TG_CHAT = '816233444';
-
-  function tgEscape(s) {
-    return String(s || '').replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
-  }
-
   const form = document.getElementById('contact-form');
   const msg = document.getElementById('form-msg');
-  const submitBtn = form && form.querySelector('button[type="submit"]');
   if (form && msg) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       const fd = new FormData(form);
       const data = {
@@ -86,41 +78,9 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && document
         msg.textContent = errors[0];
         return;
       }
-
-      const services = data.service.length ? data.service.join(', ') : '—';
-      const text = [
-        '<b>📨 Новая заявка с com.dev</b>',
-        '',
-        `<b>Имя:</b> ${tgEscape(data.name)}`,
-        `<b>Email:</b> ${tgEscape(data.email)}`,
-        `<b>Бюджет:</b> ${tgEscape(data.budget)}`,
-        `<b>Услуги:</b> ${tgEscape(services)}`,
-        '',
-        `<b>Сообщение:</b>`,
-        tgEscape(data.message),
-      ].join('\n');
-
       msg.style.color = 'var(--accent)';
-      msg.textContent = 'Отправляю…';
-      if (submitBtn) submitBtn.disabled = true;
-
-      try {
-        const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML', disable_web_page_preview: true }),
-        });
-        const json = await res.json();
-        if (!res.ok || !json.ok) throw new Error(json.description || 'Telegram error');
-        msg.style.color = 'var(--accent)';
-        msg.textContent = '✓ Спасибо! Я свяжусь с вами в течение 24 часов.';
-        form.reset();
-      } catch (err) {
-        msg.style.color = '#ff6b6b';
-        msg.textContent = 'Ошибка отправки. Напишите на komkov222111@gmail.com или @komkov01';
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
-      }
+      msg.textContent = '✓ Спасибо! Я свяжусь с вами в течение 24 часов.';
+      form.reset();
     });
   }
 }
