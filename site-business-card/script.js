@@ -61,8 +61,9 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && document
 
   const form = document.getElementById('contact-form');
   const msg = document.getElementById('form-msg');
+  const submitBtn = form && form.querySelector('button[type="submit"]');
   if (form && msg) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const fd = new FormData(form);
       const data = {
@@ -71,16 +72,48 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && document
         budget: fd.get('budget'),
         message: fd.get('message'),
         service: fd.getAll('service'),
+        honey: fd.get('_honey'),
       };
+      if (data.honey) return;
       const errors = validateForm(data);
       if (errors.length) {
         msg.style.color = '#ff6b6b';
         msg.textContent = errors[0];
         return;
       }
+
       msg.style.color = 'var(--accent)';
-      msg.textContent = '✓ Спасибо! Я свяжусь с вами в течение 24 часов.';
-      form.reset();
+      msg.textContent = 'Отправляю…';
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/komkov222111@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            Имя: data.name,
+            Email: data.email,
+            Бюджет: data.budget,
+            Услуги: data.service.length ? data.service.join(', ') : '—',
+            Сообщение: data.message,
+            _subject: 'Новая заявка с com.dev',
+            _template: 'table',
+            _captcha: 'false',
+          }),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || (json.success !== 'true' && json.success !== true)) {
+          throw new Error(json.message || 'send error');
+        }
+        msg.style.color = 'var(--accent)';
+        msg.textContent = '✓ Спасибо! Я свяжусь с вами в течение 24 часов.';
+        form.reset();
+      } catch (err) {
+        msg.style.color = '#ff6b6b';
+        msg.textContent = 'Ошибка отправки. Напишите на komkov222111@gmail.com или @komkov01';
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   }
 }
