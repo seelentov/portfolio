@@ -87,20 +87,21 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && document
       if (submitBtn) submitBtn.disabled = true;
 
       try {
+        const payload = new FormData();
+        payload.append('access_key', '47a369c9-7014-458f-86ce-6fe951bfbe4e');
+        payload.append('subject', 'Новая заявка с com.dev');
+        payload.append('from_name', 'com.dev форма');
+        payload.append('Имя', data.name);
+        payload.append('Email', data.email);
+        payload.append('Бюджет', data.budget);
+        payload.append('Услуги', data.service.length ? data.service.join(', ') : '—');
+        payload.append('Сообщение', data.message);
+        payload.append('botcheck', data.honey || '');
+
         const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            access_key: '47a369c9-7014-458f-86ce-6fe951bfbe4e',
-            subject: 'Новая заявка с com.dev',
-            from_name: 'com.dev форма',
-            Имя: data.name,
-            Email: data.email,
-            Бюджет: data.budget,
-            Услуги: data.service.length ? data.service.join(', ') : '—',
-            Сообщение: data.message,
-            botcheck: data.honey || '',
-          }),
+          headers: { 'Accept': 'application/json' },
+          body: payload,
         });
         const json = await res.json().catch(() => ({}));
         if (!res.ok || !json.success) {
