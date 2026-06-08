@@ -100,7 +100,6 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && document
 
         const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
           body: payload,
         });
         const json = await res.json().catch(() => ({}));
