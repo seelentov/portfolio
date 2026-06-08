@@ -87,22 +87,23 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined' && document
       if (submitBtn) submitBtn.disabled = true;
 
       try {
-        const res = await fetch('https://formsubmit.co/ajax/komkov222111@gmail.com', {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
+            access_key: '47a369c9-7014-458f-86ce-6fe951bfbe4e',
+            subject: 'Новая заявка с com.dev',
+            from_name: 'com.dev форма',
             Имя: data.name,
             Email: data.email,
             Бюджет: data.budget,
             Услуги: data.service.length ? data.service.join(', ') : '—',
             Сообщение: data.message,
-            _subject: 'Новая заявка с com.dev',
-            _template: 'table',
-            _captcha: 'false',
+            botcheck: data.honey || '',
           }),
         });
         const json = await res.json().catch(() => ({}));
-        if (!res.ok || (json.success !== 'true' && json.success !== true)) {
+        if (!res.ok || !json.success) {
           throw new Error(json.message || 'send error');
         }
         msg.style.color = 'var(--accent)';
