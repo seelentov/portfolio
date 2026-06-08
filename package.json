@@ -1,0 +1,36 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "test:sites": "jest --testPathPattern=tests/sites",
+    "test:apps": "npm run test --prefix app-fitness && npm run test --prefix app-meditation && npm run test --prefix app-finance",
+    "test:all": "npm run test:sites && npm run test:apps",
+    "e2e": "jest --testPathPattern=tests/e2e",
+    "serve": "npx http-server -p 8080"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "projects": [
+      {
+        "displayName": "sites-unit",
+        "testEnvironment": "node",
+        "testMatch": [
+          "<rootDir>/tests/sites/**/*.test.js"
+        ]
+      },
+      {
+        "displayName": "e2e-jsdom",
+        "testEnvironment": "jsdom",
+        "testMatch": [
+          "<rootDir>/tests/e2e/**/*.test.js"
+        ]
+      }
+    ]
+  }
+}

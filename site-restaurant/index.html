@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIR — Ресторан и винный бар</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">NOIR</a>
+    <ul class="nav-links">
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#menu">Меню</a></li>
+      <li><a href="#gallery">Галерея</a></li>
+      <li><a href="#reserve">Бронь</a></li>
+    </ul>
+    <a href="#reserve" class="btn-reserve">Забронировать</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-pre">С 2018 года — высокая кухня</p>
+    <h1 class="hero-title">
+      <span class="line"><span>Вкус</span></span>
+      <span class="line italic"><span>совершенства</span></span>
+      <span class="line"><span>в тишине</span></span>
+    </h1>
+    <p class="hero-sub">Камерное путешествие по современной европейской кухне в сопровождении редких вин и атмосферы вне времени.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Открыть меню</a>
+      <a href="#reserve" class="btn-ghost">Забронировать стол <span>→</span></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Листайте</span><div class="line-scroll"></div></div>
+</section>
+
+<section class="marquee">
+  <div class="marquee-track">
+    <span>Рекомендация Michelin</span><span>★</span>
+    <span>Сомелье года</span><span>★</span>
+    <span>Сезонное дегустационное меню</span><span>★</span>
+    <span>Шеф Антуан Лоран</span><span>★</span>
+    <span>Рекомендация Michelin</span><span>★</span>
+    <span>Сомелье года</span><span>★</span>
+    <span>Сезонное дегустационное меню</span><span>★</span>
+    <span>Шеф Антуан Лоран</span><span>★</span>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <div class="img-box about-photo"></div>
+        <div class="img-tag">С 2018 года</div>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow reveal">— Наша история</span>
+        <h2 class="reveal">Каждое блюдо<br><em>становится воспоминанием</em></h2>
+        <p class="reveal">NOIR — больше, чем ресторан. Это убежище для тех, кто ценит тихую поэзию тщательно приготовленной пищи. Наш шеф Антуан Лоран вдохновляется забытыми европейскими рецептами и переосмысливает их с помощью современной техники.</p>
+        <div class="stats reveal">
+          <div class="stat"><span class="num" data-target="12">0</span><span class="lbl">Наград</span></div>
+          <div class="stat"><span class="num" data-target="450">0</span><span class="lbl">Этикеток вин</span></div>
+          <div class="stat"><span class="num" data-target="6">0</span><span class="lbl">Сетов</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal">— Авторское меню</span>
+      <h2 class="reveal">Создано<br><em>сезонами</em></h2>
+    </div>
+    <div class="menu-grid">
+      <article class="dish reveal">
+        <div class="dish-num">01</div>
+        <div class="dish-img dish-1"></div>
+        <h3>Ризотто с чёрным трюфелем</h3>
+        <p>Рис арборио, выдержанный пармезан, свежий чёрный трюфель из Перигора, шафрановая пена</p>
+        <span class="price">3 800 ₽</span>
+      </article>
+      <article class="dish reveal">
+        <div class="dish-num">02</div>
+        <div class="dish-img dish-2"></div>
+        <h3>Тартар из вагю A5</h3>
+        <p>Японская говядина вагю, перепелиное яйцо, копчёное масло, маринованные семена горчицы</p>
+        <span class="price">4 900 ₽</span>
+      </article>
+      <article class="dish reveal">
+        <div class="dish-num">03</div>
+        <div class="dish-img dish-3"></div>
+        <h3>Атлантический сибас</h3>
+        <p>Сибас, обжаренный на сковороде, пюре из фенхеля, цитрусовый бер блан, морские травы</p>
+        <span class="price">4 200 ₽</span>
+      </article>
+      <article class="dish reveal">
+        <div class="dish-num">04</div>
+        <div class="dish-img dish-4"></div>
+        <h3>Суфле Valrhona</h3>
+        <p>Тёплое суфле из тёмного шоколада, ванильное мороженое, малиновый кули</p>
+        <span class="price">1 800 ₽</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="gallery">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal">— Атмосфера</span>
+      <h2 class="reveal">Создано для<br><em>камерных вечеров</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gal gal-1 reveal"></div>
+      <div class="gal gal-2 reveal"></div>
+      <div class="gal gal-3 reveal"></div>
+      <div class="gal gal-4 reveal"></div>
+      <div class="gal gal-5 reveal"></div>
+    </div>
+  </div>
+</section>
+
+<section id="reserve" class="reserve">
+  <div class="container">
+    <div class="reserve-grid">
+      <div class="reserve-text">
+        <span class="eyebrow reveal">— Бронирование</span>
+        <h2 class="reveal">Забронируйте<br><em>впечатления</em></h2>
+        <p class="reveal">Открыто со вторника по воскресенье, 18:00 – 23:00. Бронируйте дегустационное меню шефа минимум за 48 часов.</p>
+        <div class="contact-info reveal">
+          <div><span>Адрес</span><p>Москва, ул. Большая Никитская, 14</p></div>
+          <div><span>Телефон</span><p>+7 (495) 123-45-67</p></div>
+          <div><span>Email</span><p>contact@noir-restaurant.ru</p></div>
+        </div>
+      </div>
+      <form class="reserve-form reveal" id="reserve-form" novalidate>
+        <div class="field">
+          <label>Ваше имя</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Дата</label><input type="date" name="date" required></div>
+          <div class="field"><label>Время</label><input type="time" name="time" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Гостей</label>
+            <select name="guests" required>
+              <option value="">Выберите</option><option>2</option><option>4</option><option>6</option><option>8</option>
+            </select>
+          </div>
+          <div class="field"><label>Телефон</label><input type="tel" name="phone" required></div>
+        </div>
+        <div class="field"><label>Email</label><input type="email" name="email" required></div>
+        <button type="submit" class="btn-primary full">Подтвердить бронирование</button>
+        <p class="form-msg" id="form-msg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3 class="logo">NOIR</h3><p>Высокая кухня по-новому.</p></div>
+      <div><span>Часы работы</span><p>Вт–Вс: 18:00–23:00<br>Понедельник — выходной</p></div>
+      <div><span>Соцсети</span><p>Instagram<br>Telegram<br>VK</p></div>
+    </div>
+    <div class="copyright">© 2026 NOIR. Все права защищены.</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
